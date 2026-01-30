@@ -124,26 +124,53 @@
   </div>
 
   <script>
-    function showMessage() {
-      document.getElementById("secret").style.display = "block";
-      createHearts();
-    }
+  const messages = [
+    "You mean more to me than words can explain 💕",
+    "Even on days you’re distant, I still care deeply 🌷",
+    "I may not always say it perfectly, but my heart is sincere ❤️",
+    "I choose you — in calm days and confusing ones too ✨",
+    "Even if you don’t always notice me, I notice you 🌙",
+    "I care about you more than you know, Kezaiah 🥰",
+    "No matter what, I wish you happiness, peace, and love 🎂❤️"
+  ];
 
-    function createHearts() {
-      for (let i = 0; i < 20; i++) {
-        const heart = document.createElement("div");
-        heart.className = "heart";
-        heart.innerHTML = "❤️";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (3 + Math.random() * 3) + "s";
-        document.body.appendChild(heart);
+  let index = 0;
 
-        setTimeout(() => {
-          heart.remove();
-        }, 6000);
-      }
+  function showMessage() {
+    const secret = document.getElementById("secret");
+    const button = document.querySelector("button");
+
+    secret.style.display = "block";
+    secret.innerText = messages[index];
+
+    createHearts();
+
+    index++;
+
+    if (index < messages.length) {
+      button.innerText = "Next 💕";
+    } else {
+      button.innerText = "That’s all from my heart ❤️";
+      button.disabled = true;
+      button.style.opacity = "0.7";
     }
-  </script>
+  }
+
+  function createHearts() {
+    for (let i = 0; i < 10; i++) {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }
+  }
+</script>
 
 </body>
 </html>
